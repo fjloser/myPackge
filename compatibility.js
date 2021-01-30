@@ -1,3 +1,11 @@
+/*
+ * @Author: fangjie
+ * @Date: 2021-01-14 15:41:05
+ * @LastEditTime: 2021-01-30 14:11:32
+ * @LastEditors: Please set LastEditors
+ * @Description: to adapt all explores compatibility
+ * @FilePath: \mytestc:\Users\Administrator\Desktop\github\myPackge\compatibility.js
+ */
 /**
  * scroll compatibility func
  */
@@ -42,4 +50,17 @@ function cancelHandle(event){
     e.preventDefault();
     else
     e.returnValue = false/*ie*/
+}
+/**
+ * @description: get the ele's all kinds of attribute , and it's compatibility
+ * @param {*} obj
+ * @param {*} attr
+ * @return {*}
+ */
+function getStyle(obj, attr){
+    if(window.getComputedStyle){
+        return window.getComputedStyle(obj, null)[attr]
+    }else{
+        return obj.currentStyle[attr]
+    }
 }
