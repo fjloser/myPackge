@@ -12,3 +12,24 @@ function deepClone(obj) {
 		};
 	});
 }
+/**
+ * @description 清除子节点数组
+ * @param {*} obj 
+ * @returns 新的树状数组
+ */
+function clearChildren(data) {
+  if (data.length === 0) {
+    return [];
+  }
+  return data.map((ele) => {
+    if (ele.children && ele.children.length !== 0) {
+      const children = clearChildren(ele.children);
+      ele.children = children; // eslint-disable-line
+      return ele;
+    }
+    return {
+      value: ele.value,
+      label: ele.label,
+    };
+  });
+}
